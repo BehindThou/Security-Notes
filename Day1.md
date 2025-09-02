@@ -77,3 +77,8 @@ proxychains nc 192.168.150.128 22
 ssh -S /tmp/t1 -O forward -L3111:192.168.150.128:80 -L31112:192.168.150.128:22
 #Recon found username2 and password, authenticate to new system
 ssh -MS /tmp/t2 username2@127.0.0.1 -p 3112
+
+#For web servers, run:
+http-enum
+#Example:
+proxychains nmap --script=http-enum 192.168.28.100
