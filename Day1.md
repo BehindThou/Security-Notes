@@ -16,7 +16,6 @@ student@lin-ops$ ssh -S /tmp/jump jump -O forward -D9050
 #Now, scan with dynamic port forward 
 student@lin-ops$ proxychains nmap 192.168.28.100,105,111
 #Results:
-
 Nmap scan report for 192.168.28.100
 Host is up (0.00097s latency).
 Not shown: 998 closed ports
@@ -39,7 +38,6 @@ PORT     STATE SERVICE
 80/tcp   open  http
 2222/tcp open  EtherNetIP-1
 8080/tcp open  http-proxy
-
 
 #Verify ports (Banner grab)
 
