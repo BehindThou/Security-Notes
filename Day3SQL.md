@@ -112,5 +112,18 @@ Audi' UNION SELECT 1,2,3,4 #
 #Show query resulted in:
 select name, type, cost, color, year from car where name='Audi' UNION SELECT 1,2,3,4,5 #'
 3.) Modify Golden Statement
-
-
+```
+### Next
+```bash
+.using # or -- tells the database to ignore everything after
+#Server-Side Query:
+SELECT product FROM item WHERE id = $select limit 1;
+Input to inject: 1 OR 1=1; #
+Server Side Query becomes:
+SELECT product FROM item WHERE id =1 or 1=1; # limit 1;
+###Blind Injection
+.Includes statements to determine how DB is configured
+.Columns in output
+.Can we return errors
+.Can we return expected Output
+.Used when unsanitized fields give generic error or no messages
