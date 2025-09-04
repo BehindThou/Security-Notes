@@ -127,3 +127,7 @@ SELECT product FROM item WHERE id =1 or 1=1; # limit 1;
 .Can we return errors
 .Can we return expected Output
 .Used when unsanitized fields give generic error or no messages
+```
+### VERSION
+```bash
+UNION SELECT 1,2,@@versopm
